@@ -26,8 +26,8 @@ def fetch_mawaqit(masjid_id:str):
 
     r = requests.get(f"https://mawaqit.net/fr/{masjid_id}")
     if r.status_code == 200:
-        soup = BeautifulSoup(r.text, 'html.parser')
-        script = soup.find('script', string=re.compile(r'var confData = (.*?);', re.DOTALL))
+        searchString = r'(?:var|let)\s+confData\s*=\s*(.*?);'
+        script = soup.find('script', string=re.compile(searchString, re.DOTALL))
         if script:
             mawaqit = re.search(r'var confData = (.*?);', script.string, re.DOTALL)
             if mawaqit:
