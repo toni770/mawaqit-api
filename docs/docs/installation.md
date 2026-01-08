@@ -13,7 +13,14 @@ There are multiple ways to install and deploy the Mawaqi API depending on your p
    - Run the API using the following command: `uvicorn main:app --host 0.0.0.0 --port 8000`.
    - The API will be accessible at `http://localhost:8000`.
 
-2. **Using Docker to Build Image:**
+2. **Using prebuilt Docker Image:**
+
+   - Ensure you have Docker installed on your system.
+   - Pull the prebuilt Docker image from Docker Hub: `docker pull mrsofiane/mawaqit-api:latest`.
+   - Run the Docker container: `docker run -d --name mawaqit-api -p 8000:80 mrsofiane/mawaqit-api:latest`.
+   - The API will be accessible at `http://localhost:8000`.
+
+3. **Using Docker to Build Image from Source:**
 
    - Ensure you have Docker installed on your system.
    - Clone the repository from [GitHub](https://github.com/mrsofiane/mawaqit-api).
@@ -24,8 +31,13 @@ There are multiple ways to install and deploy the Mawaqi API depending on your p
 
 Choose the installation method that best suits your environment and preferences.
 
+> **⚠️ Important:** If you are **self-hosting** this API, it is **highly recommended to enable bearer token authentication** to protect your instance. See the [Security & Authentication](/docs/security.md) guide for details.
+
 **API Documentation:**
 
 You can find the API documentation at the path `/docs` relative to your API's base URL. It's an OpenAPI documentation generated automatically from FastAPI.
 
-[Activating Redis](/docs/redis_activation.md)
+## Next Steps
+
+- [Security & Authentication Setup](/docs/security.md)
+- [Activating Redis](/docs/redis_activation.md)
